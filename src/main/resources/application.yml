@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: taskmaster-api
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  jackson:
+    default-property-inclusion: non_null
+server:
+  port: ${PORT:8080}
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  genai:
+    base-url: ${GENAI_BASE_URL:}
+    api-key: ${GENAI_API_KEY:}
+    model: ${GENAI_MODEL:gpt-4o-mini}
